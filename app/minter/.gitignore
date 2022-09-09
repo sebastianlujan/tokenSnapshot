@@ -30,3 +30,5 @@ yarn-error.log*
 
 # vercel
 .vercel
+app/minter/utils/data.json
+./secrets.json

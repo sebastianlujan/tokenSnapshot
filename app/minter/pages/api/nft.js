@@ -1,15 +1,14 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import pepe from "../../services/scrapper.js"
+//import pepe from "../../services/scrapper.js"
+import getSchema from "../../services/fetcher.js"
 
 const handler = async (req, res) => {
-  // console.log(req.method);
-  // console.log(data)
+  
   let response;
-
-  try {
-    response = await pepe()
+  try{
+    response = await getSchema();
     res.end(JSON.stringify(response))
-  } catch (err) {
+  }catch(err){
     console.log(err)
   }
 }

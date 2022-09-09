@@ -1,14 +1,14 @@
 const axios = require('axios').default;
-
-
-const address = '0xb07f97c14d1b1b08481f9e2c3b8f13226ec0c903'
+const fs = require('fs');
+let schema = require('./schema.js')
+let secrets = require('../secrets.json')
 
 const getnftowners = async (address, tokenId) => {
 	const url = `https://deep-index.moralis.io/api/v2/nft/${address}/${tokenId}/owners?chain=eth&format=decimal`
 	const options = {
 		headers: {
 			Accept: 'application/json',
-			'X-API-Key': '',
+			'X-API-Key': secrets.API_KEY,
 		},
 	}
 
@@ -18,27 +18,11 @@ const getnftowners = async (address, tokenId) => {
     return request;
 }
 
-let schema = (address) => {
-    return {
-        token_address: address,
-        token_id: null,
-        owner_of: [],
-        token_hash: null,
-        block_number_minted: null,
-        block_number: null,
-        contract_type: null,
-        token_uri: null,
-        metadata:  null,
-        last_token_uri_sync: null,
-        last_metadata_sync: null
-    }
-}
-
 const populateSchema = (nftData , schema) => {
     let Schema = schema;
-    let owners = new Set()
+    let owners = []
 
-    nftData.map( elem => owners.add(elem.owner_of))
+    nftData.map( elem => owners.push(elem.owner_of))
 
     Schema.owner_of = owners
     Schema.token_id = nftData[0].token_id
@@ -47,24 +31,27 @@ const populateSchema = (nftData , schema) => {
     Schema.block_number = nftData[0].block_number
     Schema.contract_type = nftData[0].contract_type
     Schema.token_uri = nftData[0].token_uri
-    Schema.metadata = nftData[0].metadata
+    Schema.metadata = JSON.parse(nftData[0].metadata)
     Schema.last_token_uri_sync = nftData[0].last_token_uri_sync
     Schema.last_metadata_sync = nftData[0].last_metadata_sync
     return Schema;
 }
 
-let getSchema = async (address, schema) => {
-
-    let result = new Set()
+let getSchema = async () => {
+    let address = secrets.ADDRESS
+    
+    let result = []
     for(let i = 0; i<=10; i++){
         let nftData = await getnftowners(address, i)
        
         await new Promise(r => setTimeout(r, 1000));
-        let Schema = await populateSchema(nftData, schema)
-        result.add(Schema)
+        let Schema = await populateSchema(nftData, schema(address))
+    
+        result.push(Schema)
+        console.log(result)
     }
-
-    return JSON.stringify(result);
+    //fs.writeFileSync(__dirname + `/nftData.json`, JSON.stringify(result))
+    return result;
 }
 
 module.exports = getSchema
