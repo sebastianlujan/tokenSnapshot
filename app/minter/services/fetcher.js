@@ -68,30 +68,3 @@ let getSchema = async (address, schema) => {
 }
 
 module.exports = getSchema
-
-// {
-//     token_address: '0xb07f97c14d1b1b08481f9e2c3b8f13226ec0c903',
-//     token_id: '0',
-//     amount: '1',
-//     owner_of: '0xa289364347bfc1912ab672425abe593ec01ca56e',
-//     token_hash: '8b5db43422a5d4159a01938a9918c529',
-//     block_number_minted: '13482115',
-//     block_number: '13555168',
-//     contract_type: 'ERC1155',
-//     name: null,
-//     symbol: null,
-//     token_uri: 'https://ipfs.moralis.io:2053/ipfs/QmSXxjnqf5ggGSackfCoHAL3nXrVNiWG14FoWDwhwgj965/0000000000000000000000000000000000000000000000000000000000000000.json',
-//     metadata: `
-// {"name":"Egguardo",
-// "description":"After months of being bullied in the empire's academy, Egguardo's fate changed when one of his dishes ended up being served at the court banquet. From that day on he was appointed as the court's head chef. Egguardo has been responsible for some of the emperor's most dangerous and eccentric expeditions. The logs for some of the missions have been cleared from the Etherean Imperial File System (EIFS).",
-// "external_url":"https://www.ethereanempire.xyz",
-// "image":"ipfs://QmfNce95hQPZWcawaM3kW8oRxtr9ToQfMKnnaPVk4JyNGV",
-// "attributes":
-// [{"trait_type":"Personality","value":"Shy"},
-// {"trait_type":"Interests","value":"Cooking eggsotic & dangerous foods"},
-// {"trait_type":"Hat","value":"Failed Egg Flip"},
-// {"trait_type":"Rank","value":"Court's Head Chef"}]
-// }`,
-// //     last_token_uri_sync: '2022-05-16T14:51:27.698Z',
-// //     last_metadata_sync: '2022-06-10T16:42:58.740Z'
-// //   }
