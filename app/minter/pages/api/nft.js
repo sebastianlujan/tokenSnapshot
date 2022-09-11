@@ -3,7 +3,6 @@
 import getSchema from "../../services/fetcher.js"
 
 const handler = async (req, res) => {
-  
   let response;
   try{
     response = await getSchema();

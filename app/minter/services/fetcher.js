@@ -24,6 +24,7 @@ const populateSchema = (nftData , schema) => {
 
     nftData.map( elem => owners.push(elem.owner_of))
 
+    //refactor object assign
     Schema.owner_of = owners
     Schema.token_id = nftData[0].token_id
     Schema.token_hash = nftData[0].token_hash
@@ -50,7 +51,7 @@ let getSchema = async () => {
         result.push(Schema)
         console.log(result)
     }
-    //fs.writeFileSync(__dirname + `/nftData.json`, JSON.stringify(result))
+    fs.writeFileSync(__dirname + `/nftData.json`, JSON.stringify(result))
     return result;
 }
 
