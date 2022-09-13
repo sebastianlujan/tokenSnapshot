@@ -17,14 +17,14 @@ const createMerkleTree = () => {
     const merkleList = [];
     const leafNodes = merkleList
 
-    // for (let i = 0; i < 10; i++) {
-    // const leaves = ['a', 'b', 'c'].map(x => SHA256(x))
-    // const tree = new MerkleTree(leaves, SHA256)
-    // const root = tree.getRoot().toString('hex')
-    // const leaf = SHA256('a')
-    // const proof = tree.getProof(leaf)
-    // console.log(tree.verify(proof, leaf, root)) // true
-
+    
+        const leaves = ['a', 'b', 'c'].map(x => SHA256(x))
+        const tree = new MerkleTree(leaves, SHA256)
+        const root = tree.getRoot().toString('hex')
+        const leaf = SHA256('a')
+        const proof = tree.getProof(leaf)
+        console.log(tree.verify(proof, leaf, root)) // true
+    
 }
 
 createMerkleTree();

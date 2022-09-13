@@ -30,5 +30,8 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#own directives
 app/minter/utils/data.json
-./secrets.json
+app/minter/secrets.json
+app/minter/bd.json
