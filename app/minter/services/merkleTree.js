@@ -13,6 +13,31 @@ const { MerkleTree } = require('merkletreejs')
 const SHA256 = require('crypto-js/sha256');
 const DB = require('../db.json')
 
+const Merkle = {
+    addMerkleLeaves: ( merkleList, index ) => {
+        const leaves = merkleList[index][index].map(x => SHA256(x))
+        console.log(leaves)
+        return leaves
+    },
+    
+    createMerkleTree: (leaves, cb) => {
+        const tree =  new MerkleTree(leaves , cb)
+        return tree;
+    },
+    
+    getRoot: (tree) => {
+        return tree.getRoot().toString('hex')
+    },
+    
+    getLeaf: (address) => {return SHA256(address)},
+    
+    getProof: (tree, leaf) => {return tree.getProof(leaf)},
+    
+    verifyMerkleOwnership: (tree, proof, root, leaf) => {
+        return tree.verify(proof, leaf, root)
+    }
+}
+
 const createList = (DB) => {
     const merkleList = []
     DB.map( (nftData, index) => {
@@ -24,42 +49,16 @@ const createList = (DB) => {
     return merkleList;
 }
 
-const addMerkleLeaves = ( merkleList, index ) => {
-    const leaves = merkleList[index][index].map(x => SHA256(x))
-    console.log(leaves)
-    return leaves
-}
-
-const createMerkleTree = (leaves, cb) => {
-    const tree =  new MerkleTree(leaves , cb)
-    return tree;
-}
-
-const getRoot = (tree) => {
-    return tree.getRoot().toString('hex')
-}
-
-const getLeaf = (address) => {return SHA256(address)}
-
-const getProof = (tree, leaf) => {return tree.getProof(leaf)}
-
-const verifyMerkleOwnership = (tree, proof, root, leaf) => {
-    return tree.verify(proof, leaf, root)
-}
-
 
 let ownersList = createList(DB);
 
-let leaves = addMerkleLeaves(ownersList , 10)
-const tree = createMerkleTree(leaves, SHA256);
+let leaves = Merkle.addMerkleLeaves(ownersList , 10)
+const tree = Merkle.createMerkleTree(leaves, SHA256);
 
 const address = '0x59455ba3d00bb8cbead8fe6db3973210e49d4303';
 
-const proofOwnership = getLeaf(address);
-let proof = getProof(tree, proofOwnership);
-let it_verify = verifyMerkleOwnership( tree, proof, getRoot(tree), proofOwnership);
+const proofOwnership = Merkle.getLeaf(address);
+let proof = Merkle.getProof(tree, proofOwnership);
+let it_verify = Merkle.verifyMerkleOwnership( tree, proof, Merkle.getRoot(tree), proofOwnership);
 
-console.log(it_verify)
-
-
-//module.exports = CreateMerkleTree
+module.exports =  { Merkle }
