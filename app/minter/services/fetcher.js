@@ -53,8 +53,8 @@ let getSchema = async () => {
 	}
 
 	try {
-		fs.writeFileSync(`./bd.json`, JSON.stringify(result))
-        console.log("se ha guardado")
+		fs.writeFileSync(`./db.json`, JSON.stringify(result))
+        console.log("the file is saved")
 	} catch (err) {
 		console.error(err)
 	}

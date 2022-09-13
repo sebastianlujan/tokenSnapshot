@@ -23,7 +23,8 @@ from: https://opensea.io/collection/etherean-empire-drops
 ## Mission: Deploy image and meta
 ### Strategy:
 
-1. Redeploy the images secuencially to ipfs or pinata , [research]
+1. Redeploy the images secuencially to ipfs or pinata , [research] ipfs.js and pineIT
+    how to deploy NFTs from opensea
 2. Redeploy metadata using the new CID by tokenId
 
 ```js
@@ -56,6 +57,42 @@ from: https://opensea.io/collection/etherean-empire-drops
         - query the event log
         - scraping on OpenSea
         - research NFTs APIs
+            https://ethereum.stackexchange.com/questions/107526/how-can-i-query-to-find-all-nft-token-holders
+            https://ethereum.stackexchange.com/questions/36274/a-list-of-token-holders-at-a-specific-time/64814#64814
+            https://github.com/TokenMarketNet/sto/blob/master/sto/ethereum/scanner.py
+
+            - ver : https://ethereum.stackexchange.com/questions/41684/api-to-gather-list-of-top-token-holders
+
+            - probable answer: 
+                - https://ethereum.stackexchange.com/questions/61565/list-holders-and-tokens-for-an-erc-721-contract?rq=1
+                ```js
+                    {
+                        "dependencies": {
+                            "@0xcert/ethereum-erc721": "^2.0.0-rc1",
+                            "web3": "^1.0.0-beta.37"
+                        }
+                    }
+                    // try to adapt
+                    {
+                        const CONTRACT_ACCOUNT = "0xE9e3F9cfc1A64DFca53614a0182CFAD56c10624F";
+                        const CONTRACT_ACCOUNT = "0xE9e3F9cfc1A64DFca53614a0182CFAD56c10624F";
+                        const CONTRACT_START = 6645906;
+                        const INFURA_KEY = "55397e793412497fb349e0ff77f154f2";
+
+                        const Web3 = require('web3'); // Use web3@1.0.0-beta.36+ https://github.com/ethereum/web3.js/issues/1916
+                        const web3 = new Web3(new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/' + INFURA_KEY));
+                        const erc721 = require("@0xcert/ethereum-erc721/build/erc721.json").ERC721;
+                        const contract = new web3.eth.Contract(erc721.abi, CONTRACT_ACCOUNT);
+                        var idToOwner = {};
+
+                        contract.getPastEvents('Transfer', {fromBlock: CONTRACT_START, toBlock: CONTRACT_START+60000}).then(events => {
+                        events.forEach(event => {
+                            idToOwner[event.returnValues._tokenId] = event.returnValues._to
+                        });
+                        console.log(idToOwner);
+                        });
+                    }
+                ```
             - the openSea API
             - Alchemy
             - Moralis

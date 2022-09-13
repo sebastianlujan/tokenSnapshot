@@ -34,4 +34,4 @@ yarn-error.log*
 #own directives
 app/minter/utils/data.json
 app/minter/secrets.json
-app/minter/bd.json
+app/minter/db.json
