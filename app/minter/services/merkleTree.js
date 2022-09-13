@@ -50,15 +50,19 @@ const createList = (DB) => {
 }
 
 
-let ownersList = createList(DB);
+let createAddressTree = (index) => {
+    let ownersList = createList(DB);
+    leaves = Merkle.addMerkleLeaves(ownersList , index)
+    return leaves;
+}
 
-let leaves = Merkle.addMerkleLeaves(ownersList , 10)
-const tree = Merkle.createMerkleTree(leaves, SHA256);
+let verifyAddressTree = ( address ) => {
+    const tree = Merkle.createMerkleTree(createAddressTree(index), SHA256);
 
-const address = '0x59455ba3d00bb8cbead8fe6db3973210e49d4303';
+    const proofOwnership = Merkle.getLeaf(address);
+    let proof = Merkle.getProof(tree, proofOwnership);
+    let it_verify = Merkle.verifyMerkleOwnership( tree, proof, Merkle.getRoot(tree), proofOwnership);
+} 
 
-const proofOwnership = Merkle.getLeaf(address);
-let proof = Merkle.getProof(tree, proofOwnership);
-let it_verify = Merkle.verifyMerkleOwnership( tree, proof, Merkle.getRoot(tree), proofOwnership);
 
-module.exports =  { Merkle }
+module.exports =  { createAddressTree, verifyAddressTree }

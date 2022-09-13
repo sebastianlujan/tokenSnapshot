@@ -14,15 +14,4 @@ let schema = (address) => {
     }
 }
 
-createList: (DB) => {
-    const merkleList = []
-    DB.map( (nftData, index) => {
-        let data = {}
-        data[index] = nftData.owner_of
-        merkleList.push(data)
-    })
-    console.log(merkleList)
-    return merkleList;
-},
-
 module.exports = schema;
