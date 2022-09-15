@@ -1,61 +1,77 @@
-const pinataSDK = require('@pinata/sdk');
-const secrets = require("../secrets.json")
-const pinata = pinataSDK(secrets.API_PUBLIC_KEY_PINATA, secrets.API_SECRET_KEY_PINATA);
-const DB = require("../db.json")
-const fs = require("fs");
-const axios = require('axios');
+const pinataSDK = require('@pinata/sdk')
+const secrets = require('../secrets.json')
+const pinata = pinataSDK(
+	secrets.API_PUBLIC_KEY_PINATA,
+	secrets.API_SECRET_KEY_PINATA
+)
+const DB = require('../db.json')
+const fs = require('fs')
+const axios = require('axios')
 
 const isAuthenticated = async () => {
-    const result = await pinata.testAuthentication().then((result) => { 
-        return JSON.stringify(result)
-    }).catch((err) => {
-        return err
-    });
+	const result = await pinata
+		.testAuthentication()
+		.then(result => {
+			return JSON.stringify(result)
+		})
+		.catch(err => {
+			return err
+		})
 }
 
-const getMetadata = ( DB ) => {
-    const metadata = DB.map( elem => {
-        return elem.metadata
-    })
-    return JSON.stringify(metadata);    
+const getMetadata = DB => {
+	const metadata = DB.map(elem => {
+		return elem.metadata
+	})
+	return JSON.stringify(metadata)
 }
 
-const getImageListFromIPFS = ( DB ) => {
-    const images = DB.map( elem => {
-        const CID = elem.metadata.image
-        return `https://ipfs.io/ipfs/`+(CID.split("/")[2])
-    })
-    return images
+const getImageListFromIPFS = DB => {
+	const images = DB.map(elem => {
+		const CID = elem.metadata.image
+		return `https://ipfs.io/ipfs/` + CID.split('/')[2]
+	})
+	return images
 }
 
-let listHashedImages = getImageListFromIPFS(DB);
+let listHashedImages = getImageListFromIPFS(DB)
 
 const downloadImage = async (url, fileName) => {
-    let response = await axios(url).then (res => {
-        new Promise((resolve, reject) => {
-            res.data.pipe(fs.createWriteStream(fileName)).on('finish', () => {
-                resolve()
-            }) 
-        })
-    })
+	let response = await axios({ url, responseType: 'stream' }).then(res => {
+		return new Promise((resolve, reject) => {
+			res.data.pipe(fs.createWriteStream(fileName))
+                .on('finish', () => {
+                    console.log("the file is saved",fileName)
+                    resolve()
+                })
+                .on('error', e => reject(e));
+		})
+        
+	})
+	return response
 }
 
+const getImages = getImageNamesFromMetadata = DB => {
+    const images = DB.map(elem => {
+        const CID = elem.metadata.image
+        return CID.split('/')[2]
+    })
+    return images
+}  
 
-//downloadImage(listHashedImages[0], "test.jpg")
-console.log(listHashedImages)
 
+for(let index = 0; index< listHashedImages.length-1; index++){
+    downloadImage(listHashedImages[index], `${index}.png`)
+}
 
 //const pinJSONToIPFS = async (JSONBody) => {
-
 
 //pinMetadataToIPFS
 //hashMetadata
 //pinJSToIPFS
 //hashFile
 
-
 //module.exports = { IsAuthenticated }
-
 
 // const pinJSONToIPFS = async (JSONBody) => {
 //     const options = {
