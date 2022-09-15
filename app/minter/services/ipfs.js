@@ -9,19 +9,22 @@ const DB = require('../db.json')
 const NFT = require('../services/NFTdata.js')
 
 const PinataHelper = {
+	isAuthenticated: async (pinata) => {
+		const result = await pinata
+			.testAuthentication( )
+			.then(result => {
+				return JSON.stringify(result)
+			})
+			.catch(err => {
+				return err
+			})
+		return result;
+	},
+	//pinMetadataToIPFS
+	//hashMetadata
+	//pinJSToIPFS
+	//hashFile
 
-}
-
-const isAuthenticated = async (pinata) => {
-	const result = await pinata
-		.testAuthentication()
-		.then(result => {
-			return JSON.stringify(result)
-		})
-		.catch(err => {
-			return err
-		})
-	return result;
 }
 
 let listHashedImages = NFT.getImageListFromIPFS(DB)
@@ -30,14 +33,7 @@ for(let index = 0; index< listHashedImages.length; index++){
     NFT.downloadImage(listHashedImages[index], `./assets/${index}.png`)
 }
 
-module.exports = {
-	isAuthenticated,
-}
-
-//pinMetadataToIPFS
-//hashMetadata
-//pinJSToIPFS
-//hashFile
+module.exports = {PinataHelper}
 
 // const pinJSONToIPFS = async (JSONBody) => {
 //     const options = {

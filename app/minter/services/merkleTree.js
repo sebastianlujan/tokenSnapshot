@@ -64,5 +64,4 @@ let verifyAddressTree = ( address ) => {
     let it_verify = Merkle.verifyMerkleOwnership( tree, proof, Merkle.getRoot(tree), proofOwnership);
 } 
 
-
 module.exports =  { createAddressTree, verifyAddressTree }
