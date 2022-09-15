@@ -22,7 +22,8 @@ const getMetadata = ( DB ) => {
 
 const getImageListFromIPFS = ( DB ) => {
     const images = DB.map( elem => {
-        return elem.metadata.image
+        const CID = elem.metadata.image
+        return `https://ipfs.io/ipfs/`+(CID.split("/")[2])
     })
     return images
 }
@@ -41,7 +42,7 @@ const downloadImage = async (url, fileName) => {
 
 
 //downloadImage(listHashedImages[0], "test.jpg")
-console.log(listHashedImages[0])
+console.log(listHashedImages)
 
 
 //const pinJSONToIPFS = async (JSONBody) => {
