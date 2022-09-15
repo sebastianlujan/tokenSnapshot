@@ -30,7 +30,7 @@ const NFT = {
 		})
 		return response
 	},
-	getImages: DB => {
+	getCID: DB => {
 		const images = DB.map(elem => {
 			const CID = elem.metadata.image
 			return CID.split('/')[2]

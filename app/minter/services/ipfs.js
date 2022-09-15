@@ -1,4 +1,5 @@
 const pinataSDK = require('@pinata/sdk')
+
 const secrets = require('../secrets.json')
 const pinata = pinataSDK(
 	secrets.API_PUBLIC_KEY_PINATA,
@@ -7,7 +8,11 @@ const pinata = pinataSDK(
 const DB = require('../db.json')
 const NFT = require('../services/NFTdata.js')
 
-const isAuthenticated = async () => {
+const PinataHelper = {
+
+}
+
+const isAuthenticated = async (pinata) => {
 	const result = await pinata
 		.testAuthentication()
 		.then(result => {
@@ -16,22 +21,23 @@ const isAuthenticated = async () => {
 		.catch(err => {
 			return err
 		})
+	return result;
 }
 
 let listHashedImages = NFT.getImageListFromIPFS(DB)
 
-for(let index = 0; index< listHashedImages.length-1; index++){
-    NFT.downloadImage(listHashedImages[index], `${index}.png`)
+for(let index = 0; index< listHashedImages.length; index++){
+    NFT.downloadImage(listHashedImages[index], `./assets/${index}.png`)
 }
 
-//const pinJSONToIPFS = async (JSONBody) => {
+module.exports = {
+	isAuthenticated,
+}
 
 //pinMetadataToIPFS
 //hashMetadata
 //pinJSToIPFS
 //hashFile
-
-module.exports = { IsAuthenticated, NFT }
 
 // const pinJSONToIPFS = async (JSONBody) => {
 //     const options = {
