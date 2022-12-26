@@ -6,6 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        "bg-green" : "#00ff02"
+      },
       fontFamily: {
         "source-code-pro": ["Source Code Pro"],
         "etherean-sans": ["Etherean Sans"],
