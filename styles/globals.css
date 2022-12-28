@@ -36,6 +36,14 @@ a {
   box-sizing: border-box;
 }
 
+.bg-green {
+  color: #00ff02
+}
+
+.text-gray:hover {
+  color: #00ffff
+}
+
 
 @import "./ConnectWallet.css";
 @import "./Footer.css"
