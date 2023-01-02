@@ -10,9 +10,9 @@ module.exports = {
         "bg-green" : "#00ff02"
       },
       fontFamily: {
-        "source-code-pro": ["Source Code Pro"],
+        "source-code-pro": ["Source Code Pro", "monospace"],
         "etherean-sans": ["Etherean Sans"],
-        "anton-regular": ["Anton Regular"]
+        "anton-regular": ["Anton", "sans-serif"]
       }
     },
   },

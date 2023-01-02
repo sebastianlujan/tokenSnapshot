@@ -11,13 +11,13 @@ const Navbar = () => {
             <Link href=''><a className=''><h2 className="text-white font-anton-regular text-4xl">ETHEREANS</h2></a></Link>
         </div>
         <div className="flex pt-2">
-            <div className='text-gray-500 px-20'>
-                <Link href='#'><a className='text-gray m-2'>Collection</a></Link>
-                <Link href='#'><a className='text-gray m-2'>EIFS</a></Link>
-                <Link href='#'><a className='text-gray m-2'>Metaverse</a></Link>
-                <Link href='#'><a className='text-gray m-2'>Merch</a></Link>
-                <Link href='#'><a className='text-gray m-2'>Marketplace</a></Link>
-                <Link href='#'><a className='text-gray m-2'>Follow us</a></Link>
+            <div className='text-gray-500 px-20 font-source-code-pro font-extralight-700'>
+                <Link href='#'><a className='text-hover m-2'>Collection</a></Link>
+                <Link href='#'><a className='text-hover m-2'>EIFS</a></Link>
+                <Link href='#'><a className='text-hover m-2'>Metaverse</a></Link>
+                <Link href='#'><a className='text-hover m-2'>Merch</a></Link>
+                <Link href='#'><a className='text-hover m-2'>Marketplace</a></Link>
+                <Link href='#'><a className='text-hover m-2'>Follow us</a></Link>
             </div>
             <div className='flex'>
                 <Link href="https://medium.com/the-etherean-empire-post"><a  className='mx-2' target="_blank">
