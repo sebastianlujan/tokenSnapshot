@@ -6,3 +6,17 @@
 .font-fam {
     font-family: anton;
 }
+
+::-webkit-scrollbar {
+    width: 0.75px;
+    height: 0px;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
