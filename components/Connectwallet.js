@@ -1,9 +1,10 @@
+import { ConnectButton } from '@rainbow-me/rainbowkit'
 import Image from 'next/image'
 import Link from 'next/link'
 import robot from '../public/images/AI_1.png'
 import bridgeBtn from '../public/images/bridge_btn.png'
 import lineImage from '../public/images/deco.png'
-import connectWalletBtn from '../public/images/wallet_btn.png'
+
 
 
 const ConnectWallet = () => {
@@ -29,8 +30,8 @@ const ConnectWallet = () => {
           
           <div className='flex flex-col items-center mt-20'>
             <p className='text-xs font-bold font-source-code-pro'>Step 1: Identify Yourself</p>
-            <Image className='' src={connectWalletBtn} height={45} width={250}></Image>
-            <div className='flex flex-col items-center w-full h-auto py-10 border-2 border-teal-500 rounded-xl'>
+            <ConnectButton />
+            <div className='flex flex-col items-center w-full h-auto py-10 border-2 border-teal-500 scroll rounded-xl'>
               <p className='text-xs font-bold font-source-code-pro'>Step 2: Prepare Your Assets</p>
               <p className='text-xs font-medium text-gray-300 font-source-code-pro'>Select the NFTS you want to bridge from the old contract.</p>
               
@@ -45,11 +46,16 @@ const ConnectWallet = () => {
                 </span>
               </div>
               
-              <div className='w-[35rem] h-[17.25rem] flex flex-wrap gap-4 border-t-2 border-b-2 border-teal-500 p-4 overflow-y-auto'>
+              <div className='w-auto h-auto p-4 border-t-2 border-b-2 border-teal-500'>
+                <div className='w-[35rem] h-[15.6rem] flex flex-wrap gap-4  overflow-y-auto'>
 
-                  {Array(20).fill("").map((el, i) => <div className='p-1.5 rounded-lg w-auto h-[auto] bg-transparent border border-red-700 '>
-                  <div className='w-[6.3rem] h-[6.2rem] rounded bg-black border border-white'></div>
-                </div>)}
+                  {Array(2).fill("").map((el, i) => <div className='p-1.5 rounded-lg w-auto h-[auto] bg-transparent border border-red-700 '>
+                  <div className='w-[6.8rem] h-[6.4rem] rounded bg-black border border-white'></div>
+                  </div>)}
+                  {Array(18).fill("").map((el, i) => <div className='p-1.5 rounded-lg w-auto h-[auto] bg-transparent border border-red-700 '>
+                  <div className='w-[6.8rem] h-[6.4rem] rounded bg-black '></div>
+                  </div>)}
+                </div>
               </div>
               
               <p className='pt-20 text-xs font-bold font-source-code-pro'>Step 3: Bridge NFTS</p>

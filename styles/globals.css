@@ -36,13 +36,47 @@ a {
   box-sizing: border-box;
 }
 
+
 .bg-green {
   color: #00ff02
 }
 
 .text-hover:hover {
-  color: #00ffff
+  color: #00ffff;
 }
+
+.dis-hov{
+  filter: brightness(0) invert(1);
+}
+
+.dis-hov:hover {
+  filter: none;
+}
+
+.anime:hover {
+  animation: none;
+}
+
+.anime {
+  animation: text-color 5s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes text-color {
+  0% {
+    color: #00ff00;
+  }
+  50% {
+    color: #00ffff;
+  }
+  90% {
+    color: #ffff00;
+  }
+  100% {
+    color: #00ff00;
+  }
+}
+
 
 
 @import "./ConnectWallet.css";
