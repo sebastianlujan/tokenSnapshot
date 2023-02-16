@@ -36,7 +36,7 @@ export const Button = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button onClick={openConnectModal} type="button" className='corner absolute border border-green-700 font-etherean-sans left-[35.3rem] top-[49.4rem] bg-[#482567] rounded p-2' >
+                  <button onClick={openConnectModal} type="button" className='corner absolute border border-green-700 font-etherean-sans left-[35.3rem] top-[49.4rem] bg-[#482567] rounded p-2 hover:bg-teal-500' >
                     CONNECT WALLET
                   </button>
                 );
