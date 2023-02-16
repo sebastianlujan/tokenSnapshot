@@ -49,7 +49,6 @@ const createList = (DB) => {
     return merkleList;
 }
 
-
 let createAddressTree = (index) => {
     let ownersList = createList(DB);
     leaves = Merkle.addMerkleLeaves(ownersList , index)

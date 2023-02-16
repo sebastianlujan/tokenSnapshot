@@ -6,7 +6,7 @@ const pinata = pinataSDK(
 	secrets.API_SECRET_KEY_PINATA
 )
 const DB = require('../db.json')
-const NFT = require('../services/NFTdata.js')
+const NFT = require('./NFTdata.js')
 
 const PinataHelper = {
 	isAuthenticated: async (pinata) => {

@@ -35,3 +35,4 @@ yarn-error.log*
 app/minter/utils/data.json
 app/minter/secrets.json
 app/minter/db.json
+./db.json
