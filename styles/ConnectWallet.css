@@ -1,0 +1,23 @@
+.b-g {
+    background: url(../public/images/bg.jpg) repeat;
+
+}
+
+.font-fam {
+    font-family: anton;
+}
+
+::-webkit-scrollbar {
+    width: .5vw;
+    height: 0px;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #00ffff;
+    border-radius: 24px;
+}

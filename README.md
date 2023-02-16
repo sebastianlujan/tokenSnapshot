@@ -124,6 +124,3 @@ from: https://opensea.io/collection/etherean-empire-drops
         - Por ahora no mucho mas los minteos se manejan desde el abi
 
 . Deploy the new 1155 contract with (entrypoint tokenId) on testnet
-
-
-

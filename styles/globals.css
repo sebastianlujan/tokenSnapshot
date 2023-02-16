@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Source+Code+Pro:wght@200;300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "Source Code Pro";
+  src: url("/Source Code/SourceCodePro-Black.otf") format("truetype");
+} */
+
+@font-face {
+  font-family: "Etherean Sans";
+  src: url("/Source Code/EthereanSans-Regular.otf") format("truetype");
+}
+
+/* @font-face {
+  font-family: "Anton Regular";
+  src: url("/Source Code/Anton-Regular.ttf") format("truetype");
+} */
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, 'Source Code Pro', monospace, 'Anton', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+.bg-green {
+  color: #00ff02
+}
+
+.text-hover:hover {
+  color: #00ffff;
+}
+
+.dis-hov{
+  filter: brightness(0) invert(1);
+}
+
+.dis-hov:hover {
+  filter: none;
+}
+
+.anime:hover {
+  animation: none;
+}
+
+.anime {
+  animation: text-color 5s ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes text-color {
+  0% {
+    color: #00ff00;
+  }
+  50% {
+    color: #00ffff;
+  }
+  90% {
+    color: #ffff00;
+  }
+  100% {
+    color: #00ff00;
+  }
+}
+
+
+
+@import "./ConnectWallet.css";
+@import "./Footer.css"
+
