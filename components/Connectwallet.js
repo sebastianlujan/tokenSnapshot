@@ -2,8 +2,8 @@ import { Button } from '../components/Button'
 import Image from 'next/image'
 import Link from 'next/link'
 import robot from '../public/images/AI_1.png'
-import bridgeBtn from '../public/images/bridge_btn.png'
 import lineImage from '../public/images/deco.png'
+import Bridge from './BridgeButton'
 
 
 
@@ -14,13 +14,13 @@ const ConnectWallet = () => {
     <div className='w-full h-full b-g'>
 
       <div className='justify-center text-center pt-36'>
-        <h1 className='font-medium text-white font-fam text-9xl'>BRIDGENATOR 9000</h1>
-        <h4 className='mt-4 text-[2.65rem] font-etherean-sans bg-green'>HUMAN READY EDITION</h4>
+        <h1 className='font-medium text-white font-fam md:text-8xl lg:text-9xl sm:text-7xl'>BRIDGENATOR 9000</h1>
+        <h4 className='mt-4 lg:text-[2.65rem] font-etherean-sans bg-green sm:text-[1.5rem] md:text-[2rem]'>HUMAN READY EDITION</h4>
       </div>
 
-      <div className='flex w-8/12 h-auto mx-auto mt-32 pb-28'>
+      <div className='flex h-auto mx-auto mt-32 lg:w-8/12 pb-28 sm:w-full'>
         
-        <div className=''>
+        <div className='sm:hidden lg:block'>
           <Image src={lineImage}></Image>
         </div>
         
@@ -30,10 +30,12 @@ const ConnectWallet = () => {
             <Image src={robot}></Image>
           </div>
           
-          <div className='flex flex-col items-center mt-20'>
+          <div className='flex flex-col items-center mt-20 '>
             <p className='pb-8 text-xs font-bold font-source-code-pro'>Step 1: Identify Yourself</p>
-            <Button />
             <div className='flex flex-col items-center w-auto h-auto border-2 border-teal-500 py-7 scroll rounded-xl'>
+              <div className='relative h-auto w-[20rem] bottom-12 left-11'>
+                <Button />
+              </div>
               <p className='text-xs font-bold font-source-code-pro'>Step 2: Prepare Your Assets</p>
               <p className='pt-1 text-xs font-medium text-gray-300 font-source-code-pro'>Select the NFTS you want to bridge from the old contract.</p>
               
@@ -63,13 +65,15 @@ const ConnectWallet = () => {
               <p className='pt-20 text-xs font-bold font-source-code-pro'>Step 3: Bridge NFTS</p>
 
             </div>
-            <button className='corner absolute border border-green-700 font-etherean-sans left-[36rem] bottom-[-43rem] bg-[#482567] rounded py-2 px-14 hover:bg-teal-500' >BRIDGE</button>
+            <div className='relative bottom-6 right-28'>
+              <Bridge />
+            </div>
             
           </div>
           
         </div>
         
-        <div className=''>
+        <div className='sm:hidden lg:block'>
           <Image src={lineImage}></Image>
         </div>
       

@@ -36,9 +36,11 @@ export const Button = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <button onClick={openConnectModal} type="button" className='absolute border border-green-700 font-etherean-sans left-[35.3rem] top-[48.4rem] bg-[#482567] rounded p-2 hover:bg-teal-500' >
-                    CONNECT WALLET
-                  </button>
+                  
+                    <button onClick={openConnectModal} type="button" className='absolute border border-green-700 font-etherean-sans bg-[#482567] rounded p-2 hover:bg-teal-500' >
+                      CONNECT WALLET
+                    </button>
+                  
                 );
               }
               if (chain.unsupported) {
@@ -49,7 +51,7 @@ export const Button = () => {
                 );
               }
               return (
-                <div style={{ display: 'flex', gap: 12 }} className='corner absolute border border-green-700 left-[34.5rem] top-[49.4rem] bg-[#482567] rounded p-2'>
+                <div style={{ display: 'flex', gap: 12 }} >
                   <button
                     onClick={openChainModal}
                     style={{ display: 'flex', alignItems: 'center' }}
