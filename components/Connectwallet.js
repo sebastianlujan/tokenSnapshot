@@ -54,10 +54,10 @@ const ConnectWallet = () => {
                 <div className='w-auto h-[15.6rem] grid grid-cols-4 flex-wrap gap-4 pr-4 overflow-y-auto'>
 
                   {Array(2).fill("").map((el, i) => <div className='p-1.5 rounded-lg w-auto h-auto bg-transparent border border-red-700 '>
-                  <div className='w-[6.1rem] h-[6.4rem] rounded bg-black border border-white'></div>
+                  <div className='md:w-[6.1rem] h-[6.4rem] sm:w-[5.8rem] rounded bg-black border border-white'></div>
                   </div>)}
                   {Array(18).fill("").map((el, i) => <div className='p-1.5 rounded-lg w-auto h-auto bg-transparent border border-red-700 '>
-                  <div className='w-[6.1rem] h-[6.4rem] rounded bg-black '></div>
+                  <div className='md:w-[6.1rem] h-[6.4rem] sm:w-[5.8rem] rounded bg-black '></div>
                   </div>)}
                 </div>
               </div>
