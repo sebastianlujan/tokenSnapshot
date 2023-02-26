@@ -51,7 +51,7 @@ const ConnectWallet = () => {
               </div>
               
               <div className='w-full h-auto p-4 border-t-2 border-b-2 border-teal-500'>
-                <div className='w-auto h-[15.6rem] grid grid-cols-4 flex-wrap gap-4 pr-4 overflow-y-auto'>
+                <div className='w-auto h-[15.6rem] grid grid-cols-4 gap-4 pr-4 overflow-y-auto '>
 
                   {Array(2).fill("").map((el, i) => <div className='p-1.5 rounded-lg w-auto h-auto bg-transparent border border-red-700 '>
                   <div className='md:w-[6.1rem] h-[6.4rem] sm:w-[5.8rem] rounded bg-black border border-white'></div>
